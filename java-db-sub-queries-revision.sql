@@ -6,3 +6,6 @@
 	WHERE o.order_date = (SELECT max(order_date) FROM orders);
 
 -- 2. Select all product names and prices that have unit price which is bigger than price of product with name 'Carnarvon Tigers'
+	SELECT p.product_name, p.unit_price FROM products as p
+	WHERE p.unit_price > (SELECT p.unit_price FROM products as p WHERE p.product_name = 'Carnarvon Tigers')
+	ORDER BY p.unit_price DESC;
